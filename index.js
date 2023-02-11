@@ -7,12 +7,10 @@ require("dotenv").config();
 const PORT = process.env.PORT || 3000;
 
 async function connectdb() {
-  await mongoose.connect(
-    "mongodb+srv://root:root@cluster1.zhzbo1d.mongodb.net/?retryWrites=true&w=majority"
-  );
+  await mongoose.connect(process.env.MONGO_URI);
 }
 
-const Cat = mongoose.model("Cat2", { name: String, tyep: String });
+const Cat = mongoose.model("users", { login: String, password: String });
 
 try {
   app.listen(PORT);
